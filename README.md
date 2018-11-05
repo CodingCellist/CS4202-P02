@@ -4,5 +4,10 @@
   - RAM: 8GiB DDR4
   - OS: Fedora 28 (64-bit)
 
+# Benchmarks
+- matrix multiply
+- simple primality test
+- map
+
 # Run Instructions
 

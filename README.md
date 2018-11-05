@@ -8,6 +8,7 @@
 - matrix multiply
 - simple primality test
 - map
+- tail-recursive factorial
 
 # Run Instructions
 

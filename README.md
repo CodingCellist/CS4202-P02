@@ -9,6 +9,7 @@
 - simple primality test
 - map
 - tail-recursive factorial
+- [int pointers](src/intptrs.c)
 
 # Run Instructions
 

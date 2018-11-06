@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 void usage() {
+    printf("A simple primality test\n");
     printf("USAGE: ./ptest n\n");
     printf("\tn - a positive integer to test for primality\n");
 }

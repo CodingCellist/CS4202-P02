@@ -3,8 +3,9 @@
 
 void usage()
 {
-    printf("USAGE: ./mmult <n>\n");
-    printf("\tn - the dimension of the matrices: a positive, non-zero integer\n");
+    printf("Naïve matrix multiplication of two pseudorandom NxN matrices\n");
+    printf("USAGE: ./mmult <N>\n");
+    printf("\tN - the dimension of the matrices: a positive, non-zero integer\n");
 }
 
 void printMatrix(int n, int** m)
@@ -33,9 +34,8 @@ int** makeMatrix(int n)
     return matrix;
 }
 
-int** mmult(int n, int** a, int** b)
+void mmult(int** result, int** a, int** b, int n)
 {
-    int** result = makeMatrix(n);
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -43,7 +43,6 @@ int** mmult(int n, int** a, int** b)
             result[i][j] = a[i][j] * b[j][i];
         }
     }
-    return result;
 }
 
 int main(int argc, const char** argv)
@@ -57,7 +56,8 @@ int main(int argc, const char** argv)
         int n = atoi(argv[1]);
         int** a = makeMatrix(n);
         int** b = makeMatrix(n);
-        int** result = mmult(n, a, b);
+        int** result = makeMatrix(n);
+        mmult(result, a, b, n);
         printMatrix(n, result);
     }
     return 0;

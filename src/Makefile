@@ -1,3 +1,3 @@
 clean:
-	rm *.o *.s mmult ptest intptrs mymap trfact
+	rm *.o *.s mmult ptest intptrs mymap trfact bst
 

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define LOOPS 100000
 
 typedef int (*FUNPTR)(int j);
 
@@ -21,17 +22,20 @@ int main(int argc, const char** argv)
     int length = 4;
     int res[length];
     int arr[length];
-    for (int i = 0; i < length; i++)
+    for (int l = 0; l < LOOPS; l++)
     {
-        arr[i] = i;
-        printf("%d ", arr[i]);
+        for (int i = 0; i < length; i++)
+        {
+            arr[i] = i;
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+        mymap(res, &myFun, arr, length);
+        for (int i = 0; i < length; i++)
+        {
+            printf("%d ", res[i]);
+        }
+        printf("\n");
     }
-    printf("\n");
-    mymap(res, &myFun, arr, length);
-    for (int i = 0; i < length; i++)
-    {
-        printf("%d ", res[i]);
-    }
-    printf("\n");
 }
 

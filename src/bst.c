@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define LOOPS 100000
 
 typedef struct node {
     int val;
@@ -76,7 +77,10 @@ bstNode* makeTestBST()
 int main(int argc, const char** argv)
 {
     bstNode* test = makeTestBST();
-    inorder(test);
+    for (int l = 0; l < LOOPS; l++)
+    {
+        inorder(test);
+    }
     return 0;
 }
 

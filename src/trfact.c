@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define LOOPS 100000
 
 void usage()
 {
@@ -35,8 +36,11 @@ int main(int argc, const char** argv)
         }
         else
         {
-            unsigned long f = fact(n, 1);
-            printf("%lu\n", f);
+            for (int l = 0; l < LOOPS; l++)
+            {
+                unsigned long f = fact(n, 1);
+                printf("%lu\n", f);
+            }
         }
     }
     return 0;

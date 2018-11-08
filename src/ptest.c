@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define LOOPS 100000
 
 void usage() {
     printf("A simple primality test\n");
@@ -7,7 +8,7 @@ void usage() {
     printf("\tn - a positive integer to test for primality\n");
 }
 
-int ptest(int n) {
+int ptest(unsigned long int n) {
     if (n <= 1) 
     {
         return 0;
@@ -22,7 +23,7 @@ int ptest(int n) {
     }
     else
     {
-        int i = 5;
+        unsigned long int i = 5;
         while (i * i <= n)
         {
             if ((n % i == 0) || (n % (i + 2) == 0))
@@ -42,15 +43,18 @@ int main(int argc, const char** argv) {
     }
     else
     {
-        int n = atoi(argv[1]);
-        int isPrime = ptest(n);
-        if (isPrime)
+        unsigned long int n = strtoul(argv[1], NULL, 10);
+        for (int l = 0; l < LOOPS; l++)
         {
-            printf("%d is prime!\n", n);
-        }
-        else
-        {
-            printf("%d is not prime.\n", n);
+            int isPrime = ptest(n);
+            if (isPrime)
+            {
+                printf("%lu is prime!\n", n);
+            }
+            else
+            {
+                printf("%lu is not prime.\n", n);
+            }
         }
     }
     return 0;

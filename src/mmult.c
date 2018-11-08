@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define LOOPS 100000
 
 void usage()
 {
@@ -57,8 +58,11 @@ int main(int argc, const char** argv)
         int** a = makeMatrix(n);
         int** b = makeMatrix(n);
         int** result = makeMatrix(n);
-        mmult(result, a, b, n);
-        printMatrix(n, result);
+        for (int l = 0; l < LOOPS; l++)
+        {
+            mmult(result, a, b, n);
+            printMatrix(n, result);
+        }
     }
     return 0;
 }    

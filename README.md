@@ -16,7 +16,6 @@
 
 # GCC Optimisations
 - `-funroll-loops`
-- `-fif-conversion` and `-fif-conversion2` ?
 - `-foptimize-sibling-calls`
 - `-floop-interchange`
 - `-ftree-vectorize`

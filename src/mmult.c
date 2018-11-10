@@ -1,13 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define DIM 100
 #define LOOPS 100000
-
-void usage()
-{
-    printf("Naïve matrix multiplication of two pseudorandom NxN matrices\n");
-    printf("USAGE: ./mmult <N>\n");
-    printf("\tN - the dimension of the matrices: a positive, non-zero integer\n");
-}
 
 void printMatrix(int n, int** m)
 {
@@ -48,21 +42,13 @@ void mmult(int** result, int** a, int** b, int n)
 
 int main(int argc, const char** argv)
 {
-    if (argc != 2)
+    int** a = makeMatrix(DIM);
+    int** b = makeMatrix(DIM);
+    int** result = makeMatrix(DIM);
+    for (int l = 0; l < LOOPS; l++)
     {
-        usage();
-    }
-    else
-    {
-        int n = atoi(argv[1]);
-        int** a = makeMatrix(n);
-        int** b = makeMatrix(n);
-        int** result = makeMatrix(n);
-        for (int l = 0; l < LOOPS; l++)
-        {
-            mmult(result, a, b, n);
-            printMatrix(n, result);
-        }
+        mmult(result, a, b, DIM);
+        printMatrix(DIM, result);
     }
     return 0;
 }    

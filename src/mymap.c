@@ -19,17 +19,19 @@ void mymap(int* dest, FUNPTR ptr, int* arr, int length)
 
 int main(int argc, const char** argv)
 {
-    int length = 4;
+    int length = 256;
     int res[length];
     int arr[length];
     for (int l = 0; l < LOOPS; l++)
     {
+        /*
         for (int i = 0; i < length; i++)
         {
             arr[i] = i;
             printf("%d ", arr[i]);
         }
         printf("\n");
+        */
         mymap(res, &myFun, arr, length);
         for (int i = 0; i < length; i++)
         {

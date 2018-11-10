@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define MAX_FACT 20     // 20! is the largest number that fits in an ul
 #define LOOPS 100000
 
 void usage()
@@ -23,26 +24,10 @@ unsigned long fact(unsigned long n, unsigned long tail)
 
 int main(int argc, const char** argv)
 {
-    if (argc != 2)
+    for (int l = 0; l < LOOPS; l++)
     {
-        usage();
+        unsigned long f = fact(MAX_FACT, 1);
+        printf("%lu\n", f);
     }
-    else
-    {
-        int n = atoi(argv[1]);
-        if (n < 0)
-        {
-            usage();
-        }
-        else
-        {
-            for (int l = 0; l < LOOPS; l++)
-            {
-                unsigned long f = fact(n, 1);
-                printf("%lu\n", f);
-            }
-        }
-    }
-    return 0;
 }
 

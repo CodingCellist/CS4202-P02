@@ -1,12 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define N 156813515135151
 #define LOOPS 100000
-
-void usage() {
-    printf("A simple primality test\n");
-    printf("USAGE: ./ptest n\n");
-    printf("\tn - a positive integer to test for primality\n");
-}
 
 int ptest(unsigned long int n) {
     if (n <= 1) 
@@ -35,28 +30,19 @@ int ptest(unsigned long int n) {
         return 1;
     }
 }
-                    
 
 int main(int argc, const char** argv) {
-    if (argc != 2) {
-        usage();
-    }
-    else
+    for (int l = 0; l < LOOPS; l++)
     {
-        unsigned long int n = strtoul(argv[1], NULL, 10);
-        for (int l = 0; l < LOOPS; l++)
+        int isPrime = ptest(N);
+        if (isPrime)
         {
-            int isPrime = ptest(n);
-            if (isPrime)
-            {
-                printf("%lu is prime!\n", n);
-            }
-            else
-            {
-                printf("%lu is not prime.\n", n);
-            }
+            printf("%lu is prime!\n", N);
+        }
+        else
+        {
+            printf("%lu is not prime.\n", N);
         }
     }
     return 0;
 }
-

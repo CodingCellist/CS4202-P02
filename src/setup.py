@@ -17,24 +17,16 @@ def _make_dirs():
         os.mkdir(build_dir)
     for f in open(optim_flags):
         flagdir = build_dir + f[1:].replace('-', '_').replace('\n', '')
-        noflagdir = build_dir + 'fno_{:s}'.format(
-            f[2:].replace('-', '_').replace('\n', ''))
         if not os.path.isdir(flagdir):
             os.mkdir(flagdir)
-        if not os.path.isdir(noflagdir):
-            os.mkdir(noflagdir)
 
     # ASSEMBLY DIRECTORIES
     if not os.path.exists(asm_dir):
         os.mkdir(asm_dir)
     for f in open(optim_flags):
         flagdir = asm_dir + f[1:].replace('-', '_').replace('\n', '')
-        noflagdir = asm_dir + 'fno_{:s}'.format(
-            f[2:].replace('-', '_').replace('\n', ''))
         if not os.path.isdir(flagdir):
             os.mkdir(flagdir)
-        if not os.path.isdir(noflagdir):
-            os.mkdir(noflagdir)
 
     # DATA DIRECTORY
     if not os.path.exists(data_dir):
@@ -104,7 +96,7 @@ def _write_makefile():
             for cfile in glob.glob(cpattern):
                 makefile.write('\t$(CC) $(FLAGS) {:s} -o {:s}/{:s}{:s} {:s}\n'
                                .format(flag.replace('-f', '-fno-').replace('\n', ''),
-                                       build_dir + 'fno_{:s}'.format(flag[2:].replace('-', '_')).replace('\n', ''),
+                                       build_dir + flag[1:].replace('-', '_').replace('\n', ''),
                                        cfile.split('.')[0],
                                        flag.replace('-f', '-fno-').replace('-', '_').replace('\n', ''),
                                        cfile))
@@ -114,8 +106,7 @@ def _write_makefile():
             for cfile in glob.glob(cpattern):
                 makefile.write('\t$(CC) $(FLAGS) {:s} -S -o {:s}/{:s}{:s}.s {:s}\n'
                                .format(flag.replace('-f', '-fno-').replace('\n', ''),
-                                       asm_dir + 'fno_{:s}'.format(
-                                       flag[2:].replace('-', '_')).replace('\n', ''),
+                                       asm_dir + flag[1:].replace('-', '_').replace('\n', ''),
                                        cfile.split('.')[0],
                                        flag.replace('-f', '-fno-').replace('-', '_').replace('\n', ''),
                                        cfile))

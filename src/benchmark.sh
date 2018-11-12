@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-TIME=$(which time)
-
 for D in build/*; do
     echo "Using programs in ${D}"
     OLDIFS=${IFS}
@@ -13,7 +11,7 @@ for D in build/*; do
     IFS=${OLDIFS}
     for I in ${D}/*; do
         for iter in $(seq 10); do
-            $( { ${TIME} -f "${I},%U" "./${I}" > /dev/null ; } 2>> "${DATAFILE}" );
+            $( { TIMEFORMAT="${I},%4U" ; time "./${I}" > /dev/null ; } 2>> "${DATAFILE}" );
         done;
     done;
     echo "Done."

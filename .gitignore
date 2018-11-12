@@ -1,3 +1,5 @@
 /.idea/
+/src/build/
+/src/asm/
+/src/data/
 *.csv
-*.s

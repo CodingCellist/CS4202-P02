@@ -1,7 +1,7 @@
 import os
 import glob
 
-path = './Makefile'
+makefile_path = './Makefile'
 compiler = 'CC = gcc\n'
 def_flags = 'FLAGS = -Wall -Wextra -O\n'
 cpattern = '*.c'
@@ -17,7 +17,7 @@ def _make_dirs():
         os.mkdir(build_dir)
     for f in open(optim_flags):
         flagdir = build_dir + f[1:].replace('-', '_').replace('\n', '')
-        noflagdir = build_dir + 'fno{:s}'.format(
+        noflagdir = build_dir + 'fno_{:s}'.format(
             f[2:].replace('-', '_').replace('\n', ''))
         if not os.path.isdir(flagdir):
             os.mkdir(flagdir)
@@ -29,7 +29,7 @@ def _make_dirs():
         os.mkdir(asm_dir)
     for f in open(optim_flags):
         flagdir = asm_dir + f[1:].replace('-', '_').replace('\n', '')
-        noflagdir = asm_dir + 'fno{:s}'.format(
+        noflagdir = asm_dir + 'fno_{:s}'.format(
             f[2:].replace('-', '_').replace('\n', ''))
         if not os.path.isdir(flagdir):
             os.mkdir(flagdir)
@@ -41,13 +41,10 @@ def _make_dirs():
         os.mkdir(data_dir)
 
 
-def configure():
-    _make_dirs()
-
-    # WRITE MAKEFILE
-    if os.path.isfile(path):
-        os.remove(path)
-    with open(path, mode='w+') as makefile:
+def _write_makefile():
+    if os.path.isfile(makefile_path):
+        os.remove(makefile_path)
+    with open(makefile_path, mode='w+') as makefile:
         # write Makefile variables
         makefile.write(compiler)
         makefile.write(def_flags)
@@ -74,10 +71,10 @@ def configure():
         # write `clean`
         makefile.write('clean:\n')
         for f in open(optim_flags):
-            makefile.write('\trm {:s}{:s}/*\n'.format(build_dir, f[1:].replace('-', '_').replace('\n', '')))
-            makefile.write('\trm {:s}{:s}/*\n'.format(asm_dir, f[1:].replace('-', '_').replace('\n', '')))
-            makefile.write('\trm {:s}fno{:s}/*\n'.format(build_dir, f[2:].replace('-', '_').replace('\n', '')))
-            makefile.write('\trm {:s}fno{:s}/*\n'.format(asm_dir, f[2:].replace('-', '_').replace('\n', '')))
+            makefile.write('\t$(RM) {:s}{:s}/*\n'.format(build_dir, f[1:].replace('-', '_').replace('\n', '')))
+            makefile.write('\t$(RM) {:s}{:s}/*\n'.format(asm_dir, f[1:].replace('-', '_').replace('\n', '')))
+            makefile.write('\t$(RM) {:s}fno_{:s}/*\n'.format(build_dir, f[2:].replace('-', '_').replace('\n', '')))
+            makefile.write('\t$(RM) {:s}fno_{:s}/*\n'.format(asm_dir, f[2:].replace('-', '_').replace('\n', '')))
         makefile.write('\n')
 
         # write compilation options
@@ -107,7 +104,7 @@ def configure():
             for cfile in glob.glob(cpattern):
                 makefile.write('\t$(CC) $(FLAGS) {:s} -o {:s}/{:s}{:s} {:s}\n'
                                .format(flag.replace('-f', '-fno-').replace('\n', ''),
-                                       build_dir + 'fno{:s}'.format(flag[2:].replace('-', '_')).replace('\n', ''),
+                                       build_dir + 'fno_{:s}'.format(flag[2:].replace('-', '_')).replace('\n', ''),
                                        cfile.split('.')[0],
                                        flag.replace('-f', '-fno-').replace('-', '_').replace('\n', ''),
                                        cfile))
@@ -117,12 +114,17 @@ def configure():
             for cfile in glob.glob(cpattern):
                 makefile.write('\t$(CC) $(FLAGS) {:s} -S -o {:s}/{:s}{:s}.s {:s}\n'
                                .format(flag.replace('-f', '-fno-').replace('\n', ''),
-                                       asm_dir + 'fno{:s}'.format(
+                                       asm_dir + 'fno_{:s}'.format(
                                        flag[2:].replace('-', '_')).replace('\n', ''),
                                        cfile.split('.')[0],
                                        flag.replace('-f', '-fno-').replace('-', '_').replace('\n', ''),
                                        cfile))
             makefile.write('\n')
+
+
+def configure():
+    _make_dirs()
+    _write_makefile()
 
 
 if __name__ == '__main__':

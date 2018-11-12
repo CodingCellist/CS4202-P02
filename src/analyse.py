@@ -13,9 +13,6 @@ def analyse():
             df_named = df\
                 .replace(to_replace=r'build/*', value='', regex=True)\
                 .replace(to_replace='{:s}/'.format(dirname), value='', regex=True)
-            # print(dirname)
-            # print(df_named)
-            # exit(0)
             means_df = df_named.groupby('program').mean()
             means_df[means_df['utime'] >= 0.1].plot(title=dirname, kind='bar')
             means_df[means_df['utime'] < 0.1].plot(title=dirname, kind='bar')

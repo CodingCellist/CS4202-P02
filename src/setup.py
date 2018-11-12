@@ -65,8 +65,6 @@ def _write_makefile():
         for f in open(optim_flags):
             makefile.write('\t$(RM) {:s}{:s}/*\n'.format(build_dir, f[1:].replace('-', '_').replace('\n', '')))
             makefile.write('\t$(RM) {:s}{:s}/*\n'.format(asm_dir, f[1:].replace('-', '_').replace('\n', '')))
-            makefile.write('\t$(RM) {:s}fno_{:s}/*\n'.format(build_dir, f[2:].replace('-', '_').replace('\n', '')))
-            makefile.write('\t$(RM) {:s}fno_{:s}/*\n'.format(asm_dir, f[2:].replace('-', '_').replace('\n', '')))
         makefile.write('\n')
 
         # write compilation options

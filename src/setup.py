@@ -57,7 +57,7 @@ def _write_makefile():
             makefile.write(
                 '{:s}-asm '.format(flag[1:].replace('\n', '')))
             makefile.write('{:s}-asm '.format(
-                flag.replace('-f', '-fno')[1:].replace('\n', '')))
+                flag.replace('-f', '-fno-')[1:].replace('\n', '')))
         makefile.write('\n\n')
 
         # write `clean`
@@ -100,7 +100,7 @@ def _write_makefile():
                                        cfile))
             makefile.write('\n')
             # write assembly part with flag disabled
-            makefile.write('{:s}-asm:\n'.format(flag.replace('-f', '-fno')[1:].replace('\n', '')))
+            makefile.write('{:s}-asm:\n'.format(flag.replace('-f', '-fno-')[1:].replace('\n', '')))
             for cfile in glob.glob(cpattern):
                 makefile.write('\t$(CC) $(FLAGS) {:s} -S -o {:s}/{:s}{:s}.s {:s}\n'
                                .format(flag.replace('-f', '-fno-').replace('\n', ''),

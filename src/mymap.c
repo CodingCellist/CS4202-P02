@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#define LOOPS 100000
+#include "loops.h"
 
 typedef int (*FUNPTR)(int j);
 
@@ -17,7 +17,7 @@ void mymap(int* dest, FUNPTR ptr, int* arr, int length)
     }
 }
 
-int main(int argc, const char** argv)
+int main(void)
 {
     int length = 256;
     int res[length];

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#define DIM 100
-#define LOOPS 100000
+#include "loops.h"
+#define DIM 10
 
 void printMatrix(int n, int** m)
 {
@@ -40,7 +40,7 @@ void mmult(int** result, int** a, int** b, int n)
     }
 }
 
-int main(int argc, const char** argv)
+int main(void)
 {
     int** a = makeMatrix(DIM);
     int** b = makeMatrix(DIM);
@@ -52,4 +52,3 @@ int main(int argc, const char** argv)
     }
     return 0;
 }    
-

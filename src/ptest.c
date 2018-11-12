@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#define N 156813515135151
-#define LOOPS 100000
+#include "loops.h"
+#define N 1296557
 
 int ptest(unsigned long int n) {
     if (n <= 1) 
@@ -31,7 +31,7 @@ int ptest(unsigned long int n) {
     }
 }
 
-int main(int argc, const char** argv) {
+int main(void) {
     for (int l = 0; l < LOOPS; l++)
     {
         int isPrime = ptest(N);

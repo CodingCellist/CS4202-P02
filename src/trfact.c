@@ -1,16 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
-#define MAX_FACT 20     // 20! is the largest number that fits in an ul
-#define LOOPS 100000
+#include "loops.h"
+#define MAX_FACT 20     // 20! is the largest factorial that fits in an llu
 
-void usage()
-{
-    printf("Calculates the factorial of the given integer using tail recursion.\n");
-    printf("USAGE: ./trfact n\n");
-    printf("\tn - a non-negative integer\n");
-}
-
-unsigned long fact(unsigned long n, unsigned long tail)
+unsigned long fact(unsigned long long n, unsigned long long tail)
 {
    if (n == 0)
    {
@@ -22,12 +15,12 @@ unsigned long fact(unsigned long n, unsigned long tail)
    }
 }
 
-int main(int argc, const char** argv)
+int main(void)
 {
     for (int l = 0; l < LOOPS; l++)
     {
         unsigned long f = fact(MAX_FACT, 1);
-        printf("%lu\n", f);
+        printf("%llu\n", f);
     }
 }
 

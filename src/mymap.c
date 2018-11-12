@@ -24,14 +24,6 @@ int main(void)
     int arr[length];
     for (int l = 0; l < LOOPS; l++)
     {
-        /*
-        for (int i = 0; i < length; i++)
-        {
-            arr[i] = i;
-            printf("%d ", arr[i]);
-        }
-        printf("\n");
-        */
         mymap(res, &myFun, arr, length);
         for (int i = 0; i < length; i++)
         {

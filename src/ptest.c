@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "loops.h"
-#define N 1296557
+#define N 1296557UL
 
 int ptest(unsigned long int n) {
     if (n <= 1) 

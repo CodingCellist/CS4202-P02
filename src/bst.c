@@ -72,6 +72,7 @@ bstNode* makeTestBST()
     insert(root, 14);
     insert(root, 13);
     insert(root, 21);
+    return root;
 }
 
 int main(void)

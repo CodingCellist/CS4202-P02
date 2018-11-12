@@ -11,7 +11,6 @@
 - simple primality test
 - map
 - tail-recursive factorial
-- [int pointers](src/intptrs.c)
 - simple BST insertion and search
 
 # GCC Optimisations

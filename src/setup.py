@@ -9,6 +9,7 @@ optim_flags = './flags'
 build_dir = './build/'
 asm_dir = './asm/'
 data_dir = './data/'
+plot_dir = data_dir + 'plots/'
 
 
 def _make_dirs():
@@ -31,6 +32,8 @@ def _make_dirs():
     # DATA DIRECTORY
     if not os.path.exists(data_dir):
         os.mkdir(data_dir)
+    if not os.path.exists(plot_dir):
+        os.mkdir(plot_dir)
 
 
 def _write_makefile():

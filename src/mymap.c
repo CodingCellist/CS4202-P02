@@ -4,12 +4,14 @@
 
 typedef int (*FUNPTR)(int j);
 
+const int length = 256;
+
 int myFun(int a)
 {
     return a * a;
 }
 
-void mymap(int* dest, FUNPTR ptr, int* arr, int length)
+void mymap(int* dest, FUNPTR ptr, int* arr)
 {
     for (int i = 0; i < length; i++)
     {
@@ -19,12 +21,11 @@ void mymap(int* dest, FUNPTR ptr, int* arr, int length)
 
 int main(void)
 {
-    int length = 256;
     int res[length];
     int arr[length];
     for (int l = 0; l < LOOPS; l++)
     {
-        mymap(res, &myFun, arr, length);
+        mymap(res, &myFun, arr);
         for (int i = 0; i < length; i++)
         {
             printf("%d ", res[i]);

@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "loops.h"
-#define MAX_FACT 20     // 20! is the largest factorial that fits in an llu
+
+const unsigned long long MAX_FACT = 20;     // 20! is the largest factorial that fits in an llu
 
 unsigned long long fact(unsigned long long n, unsigned long long tail)
 {

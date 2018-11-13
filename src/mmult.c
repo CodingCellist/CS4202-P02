@@ -1,10 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "loops.h"
+#define DIM 10
 
-const int n = 10;
-
-void printMatrix(int** m)
+void printMatrix(int n, int** m)
 {
     for (int i = 0; i < n; i++)
     {
@@ -16,7 +15,7 @@ void printMatrix(int** m)
     }
 }
 
-int** makeMatrix()
+int** makeMatrix(int n)
 {
     int** matrix = malloc(n * sizeof(int*));
     for (int i = 0; i < n; i++)
@@ -30,7 +29,7 @@ int** makeMatrix()
     return matrix;
 }
 
-void mmult(int** result, int** a, int** b)
+void mmult(int** result, int** a, int** b, int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -43,13 +42,13 @@ void mmult(int** result, int** a, int** b)
 
 int main(void)
 {
-    int** a = makeMatrix();
-    int** b = makeMatrix();
-    int** result = makeMatrix();
+    int** a = makeMatrix(DIM);
+    int** b = makeMatrix(DIM);
+    int** result = makeMatrix(DIM);
     for (int l = 0; l < LOOPS; l++)
     {
-        mmult(result, a, b);
-        printMatrix(result);
+        mmult(result, a, b, DIM);
+        printMatrix(DIM, result);
     }
     return 0;
 }    

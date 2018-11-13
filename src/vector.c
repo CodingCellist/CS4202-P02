@@ -2,11 +2,10 @@
 #include <stdio.h>
 #include "loops.h"
 
-const int length = 256;
-const int myconst = 418;
-
 int main(void)
 {
+    int length = 256;
+    int myconst = 351;
     int res[length];
     for (int l = 0; l < LOOPS; l++)
     {

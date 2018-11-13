@@ -17,7 +17,7 @@ void main(void)
     for (int i = 0; i < LOOPS; i++)
     {
         unsigned long s = sum(N);
-        printf("%d\n", s);
+        printf("%lu\n", s);
     }
 }
 

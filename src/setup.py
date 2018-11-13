@@ -48,7 +48,7 @@ def _write_makefile():
             makefile.write(
                 '{:s} '.format(flag[1:].replace('\n', '')))
             makefile.write('{:s} '.format(
-                flag.replace('-f', '-fno')[1:].replace('\n', '')))
+                flag.replace('-f', '-fno-')[1:].replace('\n', '')))
         makefile.write('\n\n')
 
         # write `asm:`
@@ -90,7 +90,7 @@ def _write_makefile():
                                        cfile))
             makefile.write('\n')
             # write disabled flag
-            makefile.write(flag.replace('-f', '-fno')[1:].replace('\n', ':\n'))
+            makefile.write(flag.replace('-f', '-fno-')[1:].replace('\n', ':\n'))
             for cfile in glob.glob(cpattern):
                 makefile.write('\t$(CC) $(FLAGS) {:s} -o {:s}/{:s}{:s} {:s}\n'
                                .format(flag.replace('-f', '-fno-').replace('\n', ''),

@@ -3,5 +3,5 @@
 /src/build/
 /src/asm/
 /src/data/
-/src/Makefile
+Makefile
 *.csv

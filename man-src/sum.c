@@ -13,8 +13,8 @@ int main(void)
         s = 0;
         i = 1;
         // unrolled using Duff's Device
-        count = (n + 7) / 8;
-        switch (n % 8) {
+        count = (N + 7) / 8;
+        switch (N % 8) {
             case 0: do { s += i++;
             case 7:      s += i++;
             case 6:      s += i++;

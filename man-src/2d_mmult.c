@@ -12,25 +12,25 @@ int main(void)
     int l;
     // matrices
     int** a = (int**) malloc(DIM * sizeof(int*));
-    for (i = 0; i < n; i++)
+    for (i = 0; i < DIM; i++)
     {
         a[i] = (int*) malloc(DIM * sizeof(int));
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < DIM; j++)
         {
             a[i][j] = rand();
         }
     }
     int** b = (int**) malloc(DIM * sizeof(int*));
-    for (i = 0; i < n; i++)
+    for (i = 0; i < DIM; i++)
     {
         b[i] = (int*) malloc(DIM * sizeof(int));
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < DIM; j++)
         {
             b[i][j] = rand();
         }
     }
     int** result = (int**) malloc(DIM * sizeof(int*));
-    for (i = 0; i < n; i++)
+    for (i = 0; i < DIM; i++)
     {
         result[i] = (int*) malloc(DIM * sizeof(int));
     }
@@ -38,12 +38,12 @@ int main(void)
     for (l = 0; l < LOOPS; l++)
     {
         // mmult
-        for (i = 0; i < n; i++)
+        for (i = 0; i < DIM; i++)
         {
-            for (j = 0; j < n; j++)
+            for (j = 0; j < DIM; j++)
             {
                 int sum = 0;
-                for (k = 0; k < n; k++)
+                for (k = 0; k < DIM; k++)
                 {
                     sum += a[i][k] * b[k][j];
                 }

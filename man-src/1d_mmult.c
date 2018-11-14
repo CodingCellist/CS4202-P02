@@ -26,16 +26,16 @@ int main(void)
     for (l = 0; l < LOOPS; l++)
     {
         // mmult
-        for (i = 0; i < n; i++)
+        for (i = 0; i < DIM; i++)
         {
-            for (j = 0; j < n; j++)
+            for (j = 0; j < DIM; j++)
             {
                 int sum = 0;
-                for (k = 0; k < n; k++)
+                for (k = 0; k < DIM; k++)
                 {
-                    sum += a[i * n + k] * b[k * n + j];
+                    sum += a[i * DIM + k] * b[k * DIM + j];
                 }
-                result[i * n + j] = sum;
+                result[i * DIM + j] = sum;
             }
         }
         printf("%d\n", result[42]);

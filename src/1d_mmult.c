@@ -3,18 +3,6 @@
 #define LOOPS 5
 #define DIM 1024
 
-void printMatrix(int n, int* m)
-{
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            printf("%d ",  m[i * n + j]);
-        }
-        printf("\n");
-    }
-}
-
 int* makeMatrix(int n)
 {
     int* matrix = (int*) malloc(n * n * sizeof(int));

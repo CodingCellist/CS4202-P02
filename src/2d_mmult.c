@@ -1,19 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "loops.h"
-#define DIM 10
-
-void printMatrix(int n, int** m)
-{
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            printf("%d ",  m[i][j]);
-        }
-        printf("\n");
-    }
-}
+#define LOOPS 5
+#define DIM 1024
 
 int** makeMatrix(int n)
 {
@@ -35,7 +23,12 @@ void mmult(int** result, int** a, int** b, int n)
     {
         for (int j = 0; j < n; j++)
         {
-            result[i][j] = a[i][j] * b[j][i];
+            int sum = 0;
+            for (int k = 0; k < n; k++)
+            {
+                sum += a[i][k] * b[k][j];
+            }
+            result[i][j] = sum;
         }
     }
 }
@@ -48,7 +41,7 @@ int main(void)
     for (int l = 0; l < LOOPS; l++)
     {
         mmult(result, a, b, DIM);
-        printMatrix(DIM, result);
+        printf("%d\n", result[42][97]);
     }
     return 0;
-}    
+}

@@ -3,7 +3,7 @@
 #include "loops.h"
 #define N 1296557UL
 
-int ptest(unsigned long int n) {
+int ptest(const unsigned long int n) {
     if (n <= 1) 
     {
         return 0;

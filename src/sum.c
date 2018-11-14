@@ -2,7 +2,7 @@
 #include "loops.h"
 #define N 10000
 
-unsigned long int sum(unsigned long int n)
+unsigned long int sum(const unsigned long int n)
 {
     unsigned long int s = 0;
     for (unsigned long int i = 1; i <= n; i++)

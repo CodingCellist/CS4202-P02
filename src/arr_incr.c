@@ -4,8 +4,8 @@
 
 int main(void)
 {
-    int length = 256;
-    int myconst = 351;
+    const int length = 256;
+    const int myconst = 351;
     int res[length];
     for (int l = 0; l < LOOPS; l++)
     {
@@ -13,11 +13,7 @@ int main(void)
         {
             res[i] += myconst;
         }
-        for (int i = 0; i < length; i++)
-        {
-            printf("%d ", res[i]);
-        }
-        printf("\n");
+        printf("%d\n", res[42]);
     }
 }
 

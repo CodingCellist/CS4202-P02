@@ -8,36 +8,15 @@ typedef struct node {
     struct node* left;
 } bstNode;
 
-bstNode* makeNode(int val)
-{
-    bstNode* newNode = (bstNode*) malloc(sizeof(bstNode));
-    newNode->val = val;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    return newNode;
-}
-
-bstNode* search(bstNode* root, int val)
-{
-    if (!root || root->val == val)
-    {
-        return root;
-    }
-    else if (root->val < val)
-    {
-        return search(root->right, val);
-    }
-    else
-    {
-        return search(root->left, val);
-    }
-}
-
 bstNode* insert(bstNode* root, int val)
 {
     if (!root)
     {
-        return makeNode(val);
+        bstNode* newNode = (bstNode*) malloc(sizeof(bstNode));
+        newNode->val = val;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
     }
     else if (root->val < val)
     {
@@ -60,26 +39,27 @@ void inorder(bstNode* root)
     }
 }
 
-bstNode* makeTestBST()
-{
-    bstNode* root = insert(NULL, 8);
-    insert(root, 3);
-    insert(root, 1);
-    insert(root, 6);
-    insert(root, 4);
-    insert(root, 7);
-    insert(root, 10);
-    insert(root, 14);
-    insert(root, 13);
-    insert(root, 21);
-    return root;
-}
-
 int main(void)
 {
-    bstNode* test = makeTestBST();
+    // create root
+    bstNode* test = (bstNode*) malloc(sizeof(bstNode));
+    test->val = 8;
+    test->left = NULL;
+    test->right = NULL;
+    // insert vals
+    insert(test, 3);
+    insert(test, 1);
+    insert(test, 6);
+    insert(test, 4);
+    insert(test, 7);
+    insert(test, 10);
+    insert(test, 14);
+    insert(test, 13);
+    insert(test, 21);
+    // run
     for (int l = 0; l < LOOPS; l++)
     {
+        // traverse
         inorder(test);
     }
     return 0;

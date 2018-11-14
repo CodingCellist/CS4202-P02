@@ -3,23 +3,18 @@
 #include "loops.h"
 #define MAX_FACT 20     // 20! is the largest factorial that fits in an llu
 
-unsigned long long fact(unsigned long long n, unsigned long long tail)
-{
-   if (n == 0)
-   {
-      return tail;
-   }
-   else
-   {
-       return fact(n - 1, n * tail);
-   }
-}
-
 int main(void)
 {
+    unsigned long long f;
+    unsigned long long n;
     for (int l = 0; l < LOOPS; l++)
     {
-        unsigned long long f = fact(MAX_FACT, 1);
+        n = MAX_FACT;
+        f = 1;
+        while (n > 0)
+        {
+            f *= n--;
+        }
         printf("%llu\n", f);
     }
 }

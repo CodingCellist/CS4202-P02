@@ -6,7 +6,7 @@ int main(void)
 {
     const int length = 16384;
     long int reduction = 0;
-    int[length] arr;
+    int arr[length];
     for (int l = 0; l < LOOPS; l++)
     {
         for (int i = 0; i < length; i++)
@@ -17,4 +17,3 @@ int main(void)
     }
     return 0;
 }
-    

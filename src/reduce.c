@@ -13,7 +13,7 @@ int main(void)
         {
             reduction += arr[i];
         }
-        printf("%l\n", reduction);
+        printf("%li\n", reduction);
     }
     return 0;
 }

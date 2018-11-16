@@ -27,19 +27,19 @@ def analyse(show=False):
             plt.tight_layout()
             if not show:
                 plt.savefig(plot_dest.format(dirname, 0))
-            means_df[(means_df['utime'] < 4) & (means_df['utime'] >= 0.1)] \
+            means_df[(means_df['utime'] < 4) & (means_df['utime'] >= 0.2)] \
                 .plot(title=dirname,
                       kind='bar',
                       yerr=sem_df[
-                          (means_df['utime'] < 4) & (means_df['utime'] >= 0.1)])
+                          (means_df['utime'] < 4) & (means_df['utime'] >= 0.2)])
             plt.ylabel(ylabel=ylabel, rotation=90)
             plt.tight_layout()
             if not show:
                 plt.savefig(plot_dest.format(dirname, 1))
-            means_df[means_df['utime'] < 0.1] \
+            means_df[means_df['utime'] < 0.2] \
                 .plot(title=dirname,
                       kind='bar',
-                      yerr=sem_df[means_df['utime'] < 0.1])
+                      yerr=sem_df[means_df['utime'] < 0.2])
             plt.ylabel(ylabel=ylabel, rotation=90)
             plt.tight_layout()
             if not show:
